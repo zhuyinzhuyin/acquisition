@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
   <title>3.3万円相当の個別分析レポートを無料で</title>
 
   <!-- Google Fonts: Noto Sans JP -->
@@ -12,32 +12,170 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="bg-[#EEF2FF] text-[#0F172A] min-h-screen flex justify-center items-start sm:py-8 sm:px-4 antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- App Wrapper Container (Strictly 100% on mobile, max 480px on desktop) -->
-  <div class="w-full max-w-full sm:max-w-[460px] bg-white sm:rounded-[36px] shadow-[0_25px_60px_-15px_rgba(79,70,229,0.18)] overflow-hidden min-h-screen sm:min-h-0 sm:border sm:border-indigo-100/60 flex flex-col">
+  <!-- Inlined Strict Mobile-Lock Styles to guarantee instantaneous application -->
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: 100% !important;
+      overflow-x: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative !important;
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      background-color: #EEF2FF !important;
+      color: #0F172A !important;
+      line-height: 1.5 !important;
+      touch-action: pan-y !important;
+      -webkit-text-size-adjust: 100% !important;
+    }
+
+    /* Top Blue Area with pure internal gradient (no overflowing elements) */
+    .header-blue-gradient {
+      background: radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+                  radial-gradient(circle at 10% 90%, rgba(79, 70, 229, 0.4) 0%, transparent 50%),
+                  linear-gradient(155deg, #4F46E5 0%, #4338CA 45%, #3B82F6 100%) !important;
+      position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Fixed 16px to prevent iOS Safari auto-zooming on input focus */
+    .app-input,
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 12px 14px !important;
+      background-color: #F8FAFC !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 14px !important;
+      color: #0F172A !important;
+      font-size: 16px !important; /* STRICT 16px FOR IOS */
+      font-family: inherit !important;
+      font-weight: 500 !important;
+      outline: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      touch-action: manipulation !important;
+    }
+
+    .app-input:focus,
+    input:focus,
+    textarea:focus {
+      background-color: #FFFFFF !important;
+      border-color: #4F46E5 !important;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
+    }
+
+    .app-input::placeholder,
+    input::placeholder,
+    textarea::placeholder {
+      color: #94A3B8 !important;
+      font-size: 14px !important;
+    }
+
+    /* Radio Card Styles */
+    .radio-card {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 11px 14px !important;
+      background-color: #F8FAFC !important;
+      border: 1.5px solid #E2E8F0 !important;
+      border-radius: 14px !important;
+      transition: all 0.2s ease !important;
+      user-select: none !important;
+      touch-action: manipulation !important;
+      cursor: pointer !important;
+    }
+
+    .radio-card.active {
+      background-color: #EEF2FF !important;
+      border-color: #4F46E5 !important;
+    }
+
+    .radio-ring {
+      width: 18px !important;
+      height: 18px !important;
+      border-radius: 50% !important;
+      border: 2px solid #CBD5E1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .radio-card.active .radio-ring {
+      border-color: #4F46E5 !important;
+    }
+
+    .radio-card.active .radio-ring::after {
+      content: '' !important;
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background-color: #4F46E5 !important;
+    }
+
+    /* Submit Button */
+    .app-btn-submit {
+      background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%) !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+    }
+
+    .app-btn-submit:active {
+      transform: scale(0.98) !important;
+    }
+
+    /* URL Collapsible */
+    .url-animated-container {
+      transition: max-height 0.25s ease, opacity 0.2s ease, margin 0.25s ease !important;
+      max-height: 140px !important;
+      opacity: 1 !important;
+      overflow: hidden !important;
+    }
+
+    .url-animated-container.hidden-section {
+      max-height: 0 !important;
+      opacity: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex justify-center items-start sm:py-8 sm:px-4 antialiased">
+
+  <!-- Main Responsive Container -->
+  <div class="w-full max-w-full sm:max-w-[450px] bg-white sm:rounded-[32px] shadow-xl overflow-hidden min-h-screen sm:min-h-0 sm:border sm:border-indigo-100 flex flex-col">
     
     <!-- 头部蓝色区域 (タイトル & 説明) -->
-    <div class="header-blue-gradient relative px-5 pt-8 pb-10 sm:px-8 sm:pt-10 sm:pb-12 text-white overflow-hidden">
+    <div class="header-blue-gradient px-5 pt-8 pb-10 sm:px-7 sm:pt-10 sm:pb-12 text-white">
       
-      <!-- Top Badge / Header Accent -->
-      <div class="relative z-10">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] sm:text-xs font-extrabold mb-3 shadow-sm">
+      <div class="w-full">
+        <!-- 徽章 -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] font-extrabold mb-3">
           <span class="w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
           <span>無料プレゼント</span>
         </div>
 
-        <!-- 見出し (Responsive fluid size that NEVER exceeds mobile screen) -->
-        <h1 class="hero-title font-black tracking-tight text-white drop-shadow-sm mb-2.5">
+        <!-- 見出し (自适应不会超出屏幕) -->
+        <h1 class="text-[21px] sm:text-[25px] font-black tracking-tight text-white leading-tight mb-2.5">
           3.3万円相当の<br>個別分析レポートを無料で
         </h1>
 
         <!-- 説明 -->
-        <p class="hero-desc text-white/95 leading-relaxed font-medium">
+        <p class="text-white/95 text-[13px] sm:text-[14px] leading-relaxed font-medium">
           1分ほどの入力でお申し込みいただけます。<br>
           内容を確認し、あなたの会社に合わせて個別に分析します。
         </p>
@@ -45,16 +183,16 @@
     </div>
 
     <!-- 白色区域 (表单 Form Sheet) -->
-    <div class="relative -mt-5 bg-white rounded-t-[28px] px-5 pt-7 pb-10 sm:px-8 sm:pb-12 flex-grow shadow-[0_-10px_30px_rgba(0,0,0,0.04)] z-20">
+    <div class="relative -mt-5 bg-white rounded-t-[28px] px-5 pt-6 pb-10 sm:px-7 sm:pb-10 flex-grow shadow-[0_-8px_20px_rgba(0,0,0,0.03)] z-10">
       
       <form id="lead-form" class="space-y-4" novalidate>
         
         <!-- メールアドレス (必須) -->
         <div>
-          <label for="email" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>メールアドレス</span>
-            <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必須</span>
-          </label>
+            <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必須</span>
+          </div>
           <input 
             type="email" 
             id="email" 
@@ -64,26 +202,26 @@
             class="app-input"
             autocomplete="email"
           >
-          <p id="email-error" class="hidden text-xs text-rose-600 font-semibold mt-1 flex items-center gap-1">
-            <span>※ 有効なメールアドレスを入力してください</span>
+          <p id="email-error" class="hidden text-xs text-rose-600 font-semibold mt-1">
+            ※ 有効なメールアドレスを入力してください
           </p>
         </div>
 
         <!-- ホームページはありますか？ (必須) -->
         <div>
-          <label class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>ホームページはありますか？</span>
-            <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必须</span>
-          </label>
+            <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必須</span>
+          </div>
           
           <div class="grid grid-cols-2 gap-3 mt-1">
-            <label class="radio-card active cursor-pointer" id="label-has-website-yes">
+            <label class="radio-card active" id="label-has-website-yes">
               <input type="radio" name="has_website_radio" value="ある" checked class="hidden">
               <span class="radio-ring"></span>
               <span class="text-sm font-bold text-slate-800">ある</span>
             </label>
 
-            <label class="radio-card cursor-pointer" id="label-has-website-no">
+            <label class="radio-card" id="label-has-website-no">
               <input type="radio" name="has_website_radio" value="ない" class="hidden">
               <span class="radio-ring"></span>
               <span class="text-sm font-bold text-slate-800">ない</span>
@@ -94,10 +232,10 @@
 
         <!-- ホームページURL (※「ある」を選んだ方のみ) -->
         <div id="website-url-wrapper" class="url-animated-container">
-          <label for="website-url" class="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+          <div class="text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>ホームページURL</span>
-            <span class="text-xs text-slate-400 font-normal ml-1">※「ある」を選んだ方のみ</span>
-          </label>
+            <span class="text-[11px] text-slate-400 font-normal ml-1">※「ある」を選んだ方のみ</span>
+          </div>
           <input 
             type="url" 
             id="website-url" 
@@ -109,10 +247,10 @@
 
         <!-- 会社名 (任意) -->
         <div>
-          <label for="company-name" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>会社名</span>
-            <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">任意</span>
-          </label>
+            <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">任意</span>
+          </div>
           <input 
             type="text" 
             id="company-name" 
@@ -125,10 +263,10 @@
 
         <!-- 特に気になること・相談したいこと (任意) -->
         <div>
-          <label for="inquiry-content" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>特に気になること・相談したいこと</span>
-            <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">任意</span>
-          </label>
+            <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">任意</span>
+          </div>
           <textarea 
             id="inquiry-content" 
             name="inquiry_content" 
@@ -143,7 +281,7 @@
           <button 
             type="submit" 
             id="submit-btn"
-            class="app-btn-submit w-full py-3.5 px-5 rounded-2xl text-base font-bold text-white tracking-wide shadow-lg shadow-indigo-500/25 active:scale-[0.99] transition-all"
+            class="app-btn-submit w-full py-3.5 px-5 rounded-2xl text-base font-bold text-white tracking-wide shadow-lg shadow-indigo-500/25 transition-all"
           >
             無料で分析レポートを申し込む
           </button>
@@ -189,8 +327,22 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- JavaScript for anti-zoom and form processing -->
   <script src="config.js"></script>
   <script src="app.js"></script>
+  <script>
+    // Disable iOS double-tap zoom & pinch-to-zoom completely
+    document.addEventListener('gesturestart', function (e) {
+      e.preventDefault();
+    });
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
 </body>
 </html>
