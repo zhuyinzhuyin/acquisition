@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>3.3万円相当の個別分析レポートを無料で</title>
 
-  <!-- Google Fonts: Noto Sans JP, Plus Jakarta Sans -->
+  <!-- Google Fonts: Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,31 +18,26 @@
 </head>
 <body class="bg-[#EEF2FF] text-[#0F172A] min-h-screen flex justify-center items-start sm:py-8 sm:px-4 antialiased selection:bg-indigo-500 selection:text-white">
 
-  <!-- App Wrapper Container -->
-  <div class="w-full max-w-[480px] bg-white sm:rounded-[36px] shadow-[0_25px_60px_-15px_rgba(79,70,229,0.18)] overflow-hidden min-h-screen sm:min-h-0 sm:border sm:border-indigo-100/60 flex flex-col">
+  <!-- App Wrapper Container (Strictly 100% on mobile, max 480px on desktop) -->
+  <div class="w-full max-w-full sm:max-w-[460px] bg-white sm:rounded-[36px] shadow-[0_25px_60px_-15px_rgba(79,70,229,0.18)] overflow-hidden min-h-screen sm:min-h-0 sm:border sm:border-indigo-100/60 flex flex-col">
     
     <!-- 头部蓝色区域 (タイトル & 説明) -->
-    <div class="header-blue-gradient relative px-6 pt-10 pb-12 sm:px-8 sm:pt-12 sm:pb-14 text-white overflow-hidden">
+    <div class="header-blue-gradient relative px-5 pt-8 pb-10 sm:px-8 sm:pt-10 sm:pb-12 text-white overflow-hidden">
       
-      <!-- Background Fluid Decorative Shapes -->
-      <div class="header-blob-1"></div>
-      <div class="header-blob-2"></div>
-      <div class="header-blob-3"></div>
-
       <!-- Top Badge / Header Accent -->
       <div class="relative z-10">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm font-extrabold mb-4 shadow-sm">
-          <span class="w-2.5 h-2.5 rounded-full bg-amber-300 animate-pulse"></span>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] sm:text-xs font-extrabold mb-3 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-amber-300 animate-pulse"></span>
           <span>無料プレゼント</span>
         </div>
 
-        <!-- 見出し -->
-        <h1 class="text-[30px] sm:text-[34px] font-black tracking-tight leading-[1.25] text-white drop-shadow-sm mb-4">
-          3.3万円相当の<br class="sm:hidden">個別分析レポートを無料で
+        <!-- 見出し (Responsive fluid size that NEVER exceeds mobile screen) -->
+        <h1 class="hero-title font-black tracking-tight text-white drop-shadow-sm mb-2.5">
+          3.3万円相当の<br>個別分析レポートを無料で
         </h1>
 
         <!-- 説明 -->
-        <p class="text-white text-base sm:text-[17px] leading-relaxed font-medium">
+        <p class="hero-desc text-white/95 leading-relaxed font-medium">
           1分ほどの入力でお申し込みいただけます。<br>
           内容を確認し、あなたの会社に合わせて個別に分析します。
         </p>
@@ -50,13 +45,13 @@
     </div>
 
     <!-- 白色区域 (表单 Form Sheet) -->
-    <div class="relative -mt-6 bg-white rounded-t-[32px] px-6 pt-8 pb-10 sm:px-8 sm:pb-12 flex-grow shadow-[0_-10px_30px_rgba(0,0,0,0.04)] z-20">
+    <div class="relative -mt-5 bg-white rounded-t-[28px] px-5 pt-7 pb-10 sm:px-8 sm:pb-12 flex-grow shadow-[0_-10px_30px_rgba(0,0,0,0.04)] z-20">
       
-      <form id="lead-form" class="space-y-5" novalidate>
+      <form id="lead-form" class="space-y-4" novalidate>
         
         <!-- メールアドレス (必須) -->
         <div>
-          <label for="email" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-2">
+          <label for="email" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>メールアドレス</span>
             <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必須</span>
           </label>
@@ -69,19 +64,16 @@
             class="app-input"
             autocomplete="email"
           >
-          <p id="email-error" class="hidden text-xs text-rose-600 font-semibold mt-1.5 flex items-center gap-1">
-            <svg class="w-3.5 h-3.5 inline shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-            </svg>
-            <span>有効なメールアドレスを入力してください</span>
+          <p id="email-error" class="hidden text-xs text-rose-600 font-semibold mt-1 flex items-center gap-1">
+            <span>※ 有効なメールアドレスを入力してください</span>
           </p>
         </div>
 
         <!-- ホームページはありますか？ (必須) -->
         <div>
-          <label class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-2">
+          <label class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>ホームページはありますか？</span>
-            <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必須</span>
+            <span class="text-[11px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">必须</span>
           </label>
           
           <div class="grid grid-cols-2 gap-3 mt-1">
@@ -102,7 +94,7 @@
 
         <!-- ホームページURL (※「ある」を選んだ方のみ) -->
         <div id="website-url-wrapper" class="url-animated-container">
-          <label for="website-url" class="block text-xs sm:text-sm font-bold text-slate-800 mb-2">
+          <label for="website-url" class="block text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>ホームページURL</span>
             <span class="text-xs text-slate-400 font-normal ml-1">※「ある」を選んだ方のみ</span>
           </label>
@@ -117,7 +109,7 @@
 
         <!-- 会社名 (任意) -->
         <div>
-          <label for="company-name" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-2">
+          <label for="company-name" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>会社名</span>
             <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">任意</span>
           </label>
@@ -133,7 +125,7 @@
 
         <!-- 特に気になること・相談したいこと (任意) -->
         <div>
-          <label for="inquiry-content" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-2">
+          <label for="inquiry-content" class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-800 mb-1.5">
             <span>特に気になること・相談したいこと</span>
             <span class="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">任意</span>
           </label>
@@ -142,25 +134,25 @@
             name="inquiry_content" 
             rows="3" 
             placeholder="集客を増やしたい、リニューアルを考えている等、ご自由にご記入ください。"
-            class="app-input resize-y min-h-[90px]"
+            class="app-input resize-y min-h-[85px]"
           ></textarea>
         </div>
 
         <!-- ボタン -->
-        <div class="pt-3">
+        <div class="pt-2">
           <button 
             type="submit" 
             id="submit-btn"
-            class="app-btn-submit w-full py-4 px-6 rounded-2xl text-base sm:text-lg font-bold text-white tracking-wide shadow-lg shadow-indigo-500/30 active:scale-[0.99] transition-all"
+            class="app-btn-submit w-full py-3.5 px-5 rounded-2xl text-base font-bold text-white tracking-wide shadow-lg shadow-indigo-500/25 active:scale-[0.99] transition-all"
           >
             無料で分析レポートを申し込む
           </button>
         </div>
 
         <!-- 補足 -->
-        <div class="text-center pt-2">
-          <p class="text-xs text-slate-500 flex items-center justify-center gap-1.5 font-medium">
-            <svg class="w-4 h-4 text-emerald-500 inline shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <div class="text-center pt-1">
+          <p class="text-xs text-slate-500 flex items-center justify-center gap-1 font-medium">
+            <svg class="w-3.5 h-3.5 text-emerald-500 inline shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
             </svg>
             無理な営業はいたしません。
@@ -174,23 +166,23 @@
 
   <!-- Success Modal -->
   <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
-    <div class="bg-white rounded-[28px] max-w-sm w-full p-8 text-center shadow-2xl transform scale-95 transition-all duration-300">
-      <div class="w-16 h-16 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-4 border border-indigo-100">
-        <svg class="w-8 h-8 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="bg-white rounded-[24px] max-w-xs w-full p-6 text-center shadow-2xl transform scale-95 transition-all duration-300">
+      <div class="w-14 h-14 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto mb-3 border border-indigo-100">
+        <svg class="w-7 h-7 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
         </svg>
       </div>
-      <h3 class="text-lg font-bold text-slate-900 mb-2">
+      <h3 class="text-base font-bold text-slate-900 mb-1.5">
         送信が完了しました
       </h3>
-      <p class="text-xs text-slate-600 leading-relaxed mb-6">
+      <p class="text-xs text-slate-600 leading-relaxed mb-5">
         お申し込みいただきありがとうございます。<br>
         内容を確認の上、担当者よりご連絡いたします。
       </p>
       <button 
         type="button" 
         onclick="closeSuccessModal()"
-        class="w-full py-3.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm transition-all shadow-md shadow-indigo-500/20"
+        class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all"
       >
         閉じる
       </button>
