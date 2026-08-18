@@ -4,6 +4,8 @@ body {
   background-color: #EEF2FF;
   color: #0F172A;
   line-height: 1.6;
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
 }
 
 /* Header Fluid Blue Gradient */
@@ -46,18 +48,21 @@ body {
   pointer-events: none;
 }
 
-/* App Input Styling */
-.app-input {
+/* App Input Styling - 16px to prevent iOS auto-zoom */
+.app-input,
+input,
+textarea {
   width: 100%;
   padding: 13px 16px;
   background-color: #F8FAFC;
   border: 1.5px solid #E2E8F0;
   border-radius: 16px;
   color: #0F172A;
-  font-size: 14.5px;
+  font-size: 16px !important;
   font-weight: 500;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
+  touch-action: manipulation;
 }
 
 .app-input:focus {
